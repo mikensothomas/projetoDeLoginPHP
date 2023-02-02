@@ -10,7 +10,16 @@
 </head>
 
 <body>
-    <h1>Mikenson Thomas</h1>
+    <form class="forme" action="login.php" method="POST">
+        <h2 class="titulo">Página de cadastro</h2>
+        <label class="nome">Nome completo</label><br>
+        <input class="input" type="text" name="nome" required placeholder="Digite seu Nome completp"><br><br>
+        <label class="nome">E-mail</label><br>
+        <input class="input" required type="text" name="email" placeholder="Digite seu email"><br><br>
+        <label class="nome">Senha</label><br>
+        <input class="input" required type="text" name="senha" placeholder="Digite sua senha"><br><br>
+        <button class="button" type="submit">Cadastra</button>
+    </form>
 </body>
 
 </html>
