@@ -20,7 +20,7 @@
         position: absolute;
         right: 41%;
         top: 20%;
-        padding: 50pt;
+        padding: 70pt;
         background-color: rgb(252, 250, 250);
         border-radius: 3%;
     }
