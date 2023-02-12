@@ -1,39 +1,40 @@
 <?php
-if (count($_POST) > 0) {
+if (isset($_POST['submit'])) {
 
-    include("conexao.php");
+    include('conexao.php');
 
     $erro = false;
-    $nomeCompleto = $_POST['nome'];
+    $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    if (empty($nomeCompleto)) {
-        $erro = "Escreva teu nome completo no campo nome";
+    if (empty($_POST['nome'])) {
+        $erro = 'Preencha o campo nome';
     }
 
-    if (empty($email)) {
-        $erro = "Escreva teu email";
+    if (empty($_POST['email'])) {
+        $erro = 'Preencha o campo email';
     }
 
-    if (empty($senha)) {
-        $erro = "Escreva tua senha";
+    if (empty($_POST['senha'])) {
+        $erro = 'Preencha o campo senha';
     }
 
     if ($erro) {
-        echo "<p><b>ERRO:$erro</b></p>";
+        echo "<p><b>ERRO: $erro</b></P>";
     } else {
-        $sqli_code = "INSERT INTO login(nomeCompleto, email, senha)
-        VALUES ('$nomeCompleto', '$email', '$senha')";
-        $deu_certo = $mysqli->query($sqli_code) or die($mysqli->error);
+        $sql = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
+        $certo = $mysqli->query($sql) or die($mysql->error);
 
-        if (!$deu_certo) {
-            echo "<p><b> Erro ao cadastra o cliente </b></p>";
+        if ($certo) {
+            echo "<b>O cadastro foi feito com sucesso</b>";
+        } else {
+            echo "<b>Erro ao cadastrar o cliente</b>";
         }
     }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,17 +45,25 @@ if (count($_POST) > 0) {
     <link rel="stylesheet" href="cadastro.css">
     <title>Página de cadastro</title>
 </head>
+<style>
+.ja {
+    position: absolute;
+    top: 94%;
+    right: 29%;
+}
+</style>
 
 <body>
-    <form class="forme" action="login.php" method="POST">
+    <form class="forme" action="" method="POST">
         <h2 class="titulo">Página de cadastro</h2>
         <label class="nome">Nome completo</label><br>
-        <input required class="input" type="text" name="nome" placeholder="Digite seu Nome completp"><br><br>
+        <input class="input" type="text" name="nome" placeholder="Digite seu Nome completo"><br><br>
         <label class="nome">E-mail</label><br>
-        <input required class="input" type="text" name="email" placeholder="Digite seu email"><br><br>
+        <input class="input" type="text" name="email" placeholder="Digite seu email"><br><br>
         <label class="nome">Senha</label><br>
-        <input required class="input" type="text" name="senha" placeholder="Digite sua senha"><br><br>
-        <button class="button" type="submit">Cadastra</button>
+        <input class="input" type="text" name="senha" placeholder="Digite sua senha"><br><br>
+        <button class="button" type="submit" name="submit">Cadastra</button>
+        <a class="ja" href="login.php">Clique aqui para logar</a>
     </form>
 </body>
 

@@ -10,6 +10,7 @@
 
 <body>
     <h1>Bem vindo à nossa página</h1>
+    <h3>Seu cadastro foi feito com sucesso</h3>
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$bd = "usuario";
+$bd = "projeto_login";
 
 $mysqli = new mysqli($host, $user, $pass, $bd);
 
