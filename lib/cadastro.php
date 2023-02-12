@@ -1,7 +1,9 @@
 <?php
 if (isset($_POST['submit'])) {
-
     include('conexao.php');
+
+    if (!isset($_SESSION));
+    session_start();
 
     $erro = false;
     $nome = $_POST['nome'];
@@ -27,7 +29,7 @@ if (isset($_POST['submit'])) {
         $certo = $mysqli->query($sql) or die($mysql->error);
 
         if ($certo) {
-            echo "<b>O cadastro foi feito com sucesso</b>";
+            header('Location: login.php');
         } else {
             echo "<b>Erro ao cadastrar o cliente</b>";
         }
@@ -46,11 +48,11 @@ if (isset($_POST['submit'])) {
     <title>Página de cadastro</title>
 </head>
 <style>
-.ja {
-    position: absolute;
-    top: 94%;
-    right: 29%;
-}
+    .ja {
+        position: absolute;
+        top: 94%;
+        right: 29%;
+    }
 </style>
 
 <body>
@@ -63,7 +65,7 @@ if (isset($_POST['submit'])) {
         <label class="nome">Senha</label><br>
         <input class="input" type="text" name="senha" placeholder="Digite sua senha"><br><br>
         <button class="button" type="submit" name="submit">Cadastra</button>
-        <a class="ja" href="login.php">Clique aqui para logar</a>
+        <a class="ja" href="login.php">Já fiz o cadastro</a>
     </form>
 </body>
 

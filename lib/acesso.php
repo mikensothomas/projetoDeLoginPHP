@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (!isset($_SESSION['email']) == true and !isset($_SESSION['senah']) == true) {
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+
+    header('Location: login.php');
+} else {
+    $logado = $_SESSION['email'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +21,7 @@
 
 <body>
     <h1>Bem vindo à nossa página</h1>
-    <h3>Seu cadastro foi feito com sucesso</h3>
+    <h3>Agora voce está na página de acesso</h3>
 </body>
 
 </html>
