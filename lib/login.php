@@ -44,9 +44,24 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de cadastro</title>
+    <style>
+    .head {
+        padding: 10px;
+        background-color: blanchedalmond;
+    }
+
+    .sair {
+        position: absolute;
+        right: 1%;
+    }
+    </style>
 </head>
 
 <body>
+    <div class="head">
+        <a href="clientes.php" class="clientes">Lista dos clientes</a>
+        <a href="cadastro.php" class="sair">Página de cadastro</a>
+    </div>
     <form class="forme" action="" method="POST">
         <h2 class="titulo">Página de login</h2>
         <label class="nome">E-mail</label><br>

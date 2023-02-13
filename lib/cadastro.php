@@ -48,11 +48,11 @@ if (isset($_POST['submit'])) {
     <title>Página de cadastro</title>
 </head>
 <style>
-    .ja {
-        position: absolute;
-        top: 94%;
-        right: 29%;
-    }
+.ja {
+    position: absolute;
+    top: 94%;
+    right: 29%;
+}
 </style>
 
 <body>
