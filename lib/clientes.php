@@ -28,6 +28,8 @@ $resultado = $mysqli->query($sql);
         position: absolute;
         right: 1%;
     }
+
+    .dbtn {}
     </style>
 </head>
 
@@ -55,9 +57,13 @@ $resultado = $mysqli->query($sql);
                 echo "<td>" . $dados['nome'] . "</td>";
                 echo "<td>" . $dados['email'] . "</td>";
                 echo "<td>" . $dados['senha'] . "</td>";
-                echo "<td><a href='delete.php?id=<?php echo $dados[id]; ?>'>Deletar</a> </td>";
-            echo "<td><a href='#'>Editar</a> </td>";
-            echo "</tr>";
+                echo "<td>
+                <a class='dbtn' href='delete.php?id=$dados[id]'>Deletar</a>
+                </td>";
+                echo "<td>
+                <a class='ebtn' href=''>Editar</a> 
+                </td>";
+                echo "</tr>";
             }
             ?>
         </tbody>
