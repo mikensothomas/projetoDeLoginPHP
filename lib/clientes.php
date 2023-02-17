@@ -28,8 +28,6 @@ $resultado = $mysqli->query($sql);
         position: absolute;
         right: 1%;
     }
-
-    .dbtn {}
     </style>
 </head>
 
