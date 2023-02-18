@@ -8,7 +8,6 @@ if (!isset($_SESSION['email']) == true and !isset($_SESSION['senah']) == true) {
 } else {
     $logado = $_SESSION['email'];
 }
-/*gdouivcuwhdçiuweqgdusbduhdbdsdhiHBDUÇbduçsgdsabdçadbUÇDSBDçadvui*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
