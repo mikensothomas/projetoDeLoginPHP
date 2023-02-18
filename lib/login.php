@@ -45,15 +45,15 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de cadastro</title>
     <style>
-    .head {
-        padding: 10px;
-        background-color: blanchedalmond;
-    }
+        .head {
+            padding: 10px;
+            background-color: blanchedalmond;
+        }
 
-    .sair {
-        position: absolute;
-        right: 1%;
-    }
+        .sair {
+            position: absolute;
+            right: 1%;
+        }
     </style>
 </head>
 
@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
         <input class="input" type="text" name="email" placeholder="Digite seu email"><br><br>
         <label class="nome">Senha</label><br>
         <input class="input" type="text" name="senha" placeholder="Digite sua senha"><br><br>
-        <button class="button" type="submit" name="submit">Cadastra</button>
+        <button class="button" type="submit" name="submit">Enviar</button>
         <div class="esquecer">
             <a href="senha.php" class="senha">Esqueceu tua senha?</a>
         </div>

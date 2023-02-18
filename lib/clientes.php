@@ -59,7 +59,7 @@ $resultado = $mysqli->query($sql);
                 <a class='dbtn' href='delete.php?id=$dados[id]'>Deletar</a>
                 </td>";
                 echo "<td>
-                <a class='ebtn' href=''>Editar</a> 
+                <a class='ebtn' href='editar.php?id=$dados[id]'>Editar</a> 
                 </td>";
                 echo "</tr>";
             }
