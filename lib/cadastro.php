@@ -2,6 +2,8 @@
 if (isset($_POST['submit'])) {
     include('conexao.php');
 
+    $erro = " ";
+
     if (!isset($_SESSION));
     session_start();
 
@@ -11,20 +13,23 @@ if (isset($_POST['submit'])) {
     $senha = $_POST['senha'];
 
     if (empty($_POST['nome'])) {
-        $erro = 'Preencha o campo nome';
+        $erro = "<span style='color: red;'> Preencha o campo nome </span>";
     }
 
     if (empty($_POST['email'])) {
-        $erro = 'Preencha o campo email';
+        $erro = "<span style='color: red;'> Preencha o campo email </span>";
     }
 
     if (empty($_POST['senha'])) {
-        $erro = 'Preencha o campo senha';
+        $erro = "<span style='color: red;'> Preencha o campo senha </span>";
     }
 
-    if ($erro) {
-        echo "<p><b>ERRO: $erro</b></P>";
-    } else {
+    if (empty($_POST['nome']) && empty($_POST['email']) && empty($_POST['senha'])) {
+        $erro = "<span style='color: red;'>Preencha todos os campos </span>";
+    }
+
+    if (!$erro) {
+
         $sql = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
         $certo = $mysqli->query($sql) or die($mysql->error);
 
@@ -48,16 +53,26 @@ if (isset($_POST['submit'])) {
     <title>Página de cadastro</title>
 </head>
 <style>
-.ja {
-    position: absolute;
-    top: 94%;
-    right: 29%;
-}
+    .ja {
+        position: absolute;
+        top: 94%;
+        right: 29%;
+    }
 </style>
 
 <body>
     <form class="forme" action="" method="POST">
         <h2 class="titulo">Página de cadastro</h2>
+
+        <?php
+
+        if (isset($_POST['submit'])) {
+            echo "<p><b>$erro</b></P>";
+        }
+
+        ?>
+        <br>
+        <br>
         <label class="nome">Nome completo</label><br>
         <input class="input" type="text" name="nome" placeholder="Digite seu Nome completo"><br><br>
         <label class="nome">E-mail</label><br>

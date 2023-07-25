@@ -4,28 +4,34 @@ if (isset($_POST['submit'])) {
 
     include('conexao.php');
 
+    $erro = " ";
+    $erroLogin = " ";
+
     $erro = false;
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
     if (empty($_POST['email'])) {
-        $erro = "Preencha o campo email";
+        $erro = "<span style='color: red;'>Preencha o campo email</span>";
     }
 
     if (empty($_POST['senha'])) {
-        $erro = "Preencha o campo senha";
+        $erro = "<span style='color: red;'>Preencha o campo senha</span>";
     }
 
-    if ($erro) {
-        echo $erro;
-    } else {
+    if (empty($_POST['email']) && empty($_POST['senha'])) {
+        $erro = "<span style='color: red;'>Preencha todos os campos </span>";
+    }
+
+    if (!$erro) {
+
         $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
         $resultado = $mysqli->query($sql);
 
         if (mysqli_num_rows($resultado) < 1) {
             unset($_SESSION['email']);
             unset($_SESSION['senha']);
-            echo "email ou senha inválido";
+            $erroLogin = "<span style='color: red;'>email ou senha inválido</span>";
         } else {
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
@@ -45,15 +51,15 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de cadastro</title>
     <style>
-        .head {
-            padding: 10px;
-            background-color: blanchedalmond;
-        }
+    .head {
+        padding: 10px;
+        background-color: blanchedalmond;
+    }
 
-        .sair {
-            position: absolute;
-            right: 1%;
-        }
+    .sair {
+        position: absolute;
+        right: 1%;
+    }
     </style>
 </head>
 
@@ -64,6 +70,16 @@ if (isset($_POST['submit'])) {
     </div>
     <form class="forme" action="" method="POST">
         <h2 class="titulo">Página de login</h2>
+
+        <?php
+        if (isset($_POST['submit'])) {
+            echo $erroLogin;
+            echo $erro;
+        }
+        ?>
+
+        <br>
+        <br>
         <label class="nome">E-mail</label><br>
         <input class="input" type="text" name="email" placeholder="Digite seu email"><br><br>
         <label class="nome">Senha</label><br>
